@@ -1,0 +1,122 @@
+'use strict';
+
+const mockData = require('./mockData.js').data;
+
+//welcome message
+console.log("Hello single! time for a new adventure? :)");
+console.log("Please answer the following questions");
+
+//empty profile
+let userProfile = {
+  first_name: " ",
+  last_name: " ",
+  age: 0,
+  user_gender: " ",
+  gender_interest: " ",
+  location: " ",
+  min_age_interest: 0,
+  max_age_interest: 0
+};
+
+//questions
+const userDetails = [];
+
+while (true){
+  const first_name = prompt("What is your firstname?");
+  if (first_name ===" "){ 
+  console.log("Please type your firstname!");
+  continue;  
+  } else {
+    userDetails.push(first_name); 
+    break;
+    }
+}
+
+while (true){
+  const last_name = prompt("What is your lastname?");
+  if (last_name ===" "){ 
+  console.log("Please type your lastname!");
+  continue;  
+  } else {
+    userDetails.push(last_name); 
+    break;
+    }
+}
+
+while (true){
+  const age = Number(prompt("What is your age?"));
+  if (age < 18){ 
+  console.log("you must be at least 18 years to join this app");
+  break;  
+  } else {
+    userDetails.push(age); 
+    break;
+    }
+}
+
+while (true){
+  const user_gender = prompt("What is your gender? choose between M, F or X");
+  if (user_gender === " "){ 
+  console.log("Choose between M, F or X ");
+  continue;  
+  } else {
+    userDetails.push(user_gender); 
+    break;
+    }
+}
+
+while (true){
+  const gender_interest = prompt("Which genders are you interested in dating? choose between M, F , X or B");
+  if (gender_interest === " "){ 
+  console.log("Choose between M, F , X or B");
+  continue;  
+  } else {
+    userDetails.push(gender_interest); 
+    break;
+    }
+}
+
+while (true){
+  const location = prompt("Where do you live? choose beween rural or city");
+  if (location === " "){ 
+  console.log("choose beween rural or city");
+  continue;  
+  } else {
+    userDetails.push(location); 
+    break;
+    }
+}
+
+while (true){
+  const min_age_interest = Number(prompt("What is the minimal age your match should have?"));
+  if (min_age_interest < 18){ 
+  console.log("Please choose a age above 18");
+  continue;  
+  } else {
+    userDetails.push(min_age_interest); 
+    break;
+    }
+}
+
+while (true){
+  const max_age_interest = Number(prompt("What is the maximal age your match should have?"));
+  if (max_age_interest <= userDetails[6]){ 
+  console.log("Your maximan age should be higher than your minimum age");
+  continue;  
+  } else {
+    userDetails.push(max_age_interest); 
+    break;
+    }
+}
+console.log(userDetails);
+
+userProfile.first_name = userDetails[0];
+userProfile.last_name= userDetails[1];
+userProfile.age = userDetails[2];
+userProfile.user_gender = userDetails[3];
+userProfile.gender_interest = userDetails[4];
+userProfile.location = userDetails[5];
+userProfile.min_age_interest = userDetails[6];
+userProfile.max_age_interest = userDetails[7];
+
+console.log(userProfile);
