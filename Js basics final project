@@ -120,3 +120,48 @@ userProfile.min_age_interest = userDetails[6];
 userProfile.max_age_interest = userDetails[7];
 
 console.log(userProfile);
+
+//irate the mockdata
+
+const matchedProfiles = [];
+
+for (const profile of mockData){
+  let ageMatch = false;
+  let genderMatch = false;
+  let locationMatch = false;
+  let numOfMatches = false;
+
+  if (profile.age < userProfile.max_age_interest &&
+      profile.age > userProfile.min_age_interest &&
+      userProfile.age < profile.max_age_interest &&
+      userProfile.age > profile.min_age_interest){
+    ageMatch = true;
+      } else {
+    continue;
+      };
+
+  if (profile.gender_interest === userProfile.user_gender &&
+     userProfile.gender_interest === profile.gender){
+    genderMatch = true;
+     } else if (profile.gender_interest === "B" && userProfile.user_gender === "M" || "F"){
+    genderMatch = true;
+     } else {
+    continue;
+     };
+  
+
+  if (profile.location === userProfile.location){
+    locationMatch = true;
+  } else {
+    continue;
+  };
+
+  if (ageMatch && genderMatch && locationMatch === true){
+    matchedProfiles.push(profile);
+    console.log(profile);
+  };
+    
+};
+
+// count number of matches
+console.log("Number of matches:" + matchedProfiles.length);
